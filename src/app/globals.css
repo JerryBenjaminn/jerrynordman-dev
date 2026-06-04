@@ -2,26 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@layer base {
+  h1, h2, h3 {
+    font-family: var(--font-space-grotesk), sans-serif;
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #0a0a0f;
+  --foreground: #ededed;
+  --font-space-grotesk: 'Space Grotesk', sans-serif;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@keyframes hud-corner-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+@keyframes hud-scan {
+  0% { top: 0; opacity: 0; }
+  5% { opacity: 0.8; }
+  80% { top: 100%; opacity: 0.8; }
+  90%, 100% { top: 100%; opacity: 0; }
+}
+
+@keyframes hud-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.1; }
+}
+
+@layer utilities {
+  .animate-hud-corner {
+    animation: hud-corner-pulse 3s ease-in-out infinite;
+  }
+  .animate-hud-scan {
+    animation: hud-scan 5s ease-in-out infinite;
+    animation-delay: 1.5s;
+  }
+  .animate-hud-blink {
+    animation: hud-blink 2s ease-in-out infinite;
   }
 }
