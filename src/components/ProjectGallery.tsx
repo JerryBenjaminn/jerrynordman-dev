@@ -33,7 +33,7 @@ export function ProjectGallery({ thumbnail, media, title }: Props) {
               type="button"
               onClick={() => setActive(src)}
               aria-label={`Show image`}
-              className={`relative h-[60px] w-[80px] shrink-0 overflow-hidden rounded-md ring-2 transition-colors ${
+              className={`relative h-[60px] w-[80px] shrink-0 overflow-hidden rounded-md bg-black/20 ring-2 transition-colors ${
                 active === src ? "ring-amber-400" : "ring-transparent hover:ring-white/30"
               }`}
             >
@@ -41,7 +41,7 @@ export function ProjectGallery({ thumbnail, media, title }: Props) {
                 src={src}
                 alt={`${title} thumbnail`}
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes="80px"
               />
             </button>
