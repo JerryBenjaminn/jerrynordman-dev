@@ -17,6 +17,19 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "cubbys-blocks",
+    title: "Cubby's Blocks",
+    year: 2026,
+    tags: ["Unity", "C#", "Mobile"],
+    role: "Solo Developer",
+    shortDesc: "A mobile puzzle game featuring Cubby the cube, currently in internal testing.",
+    longDesc: "Cubby's Blocks is a mobile puzzle game built in Unity 6 for Android, featuring 30 hand-crafted levels across three worlds. Currently in internal testing ahead of public release.",
+    thumbnail: "/projects/cubbysblocks-1.png",
+    media: ["/projects/Cubby_Main.png", "/projects/Cubby_Level_1.png", "/projects/Cubby_Level_2.png"],
+    repoUrl: "https://github.com/JerryBenjaminn/Blockavist",
+    featured: true,
+  },
+  {
     slug: "cryptvania",
     title: "Cryptvania",
     year: 2025,
