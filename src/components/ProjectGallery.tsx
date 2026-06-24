@@ -14,12 +14,12 @@ export function ProjectGallery({ thumbnail, media, title }: Props) {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-black/30">
         <Image
           src={active}
           alt={title}
           fill
-          className="object-cover"
+          className="object-contain"
           priority
           sizes="(max-width: 1024px) 100vw, 50vw"
         />
