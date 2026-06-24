@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { projects } from "@/data/projects";
 import { TagPill } from "@/components/ui/TagPill";
+import { ProjectGallery } from "@/components/ProjectGallery";
 
 type Props = { params: { slug: string } };
 
@@ -29,7 +29,7 @@ export default function ProjectPage({ params }: Props) {
   const project = projects.find((p) => p.slug === params.slug);
   if (!project) notFound();
 
-  const { title, year, role, tags, longDesc, thumbnail, youtubeUrl, playUrl, repoUrl, downloadUrl } = project;
+  const { title, year, role, tags, longDesc, thumbnail, media, youtubeUrl, playUrl, repoUrl, downloadUrl } = project;
   const ytId = youtubeUrl ? getYouTubeId(youtubeUrl) : null;
 
   return (
@@ -106,19 +106,10 @@ export default function ProjectPage({ params }: Props) {
             )}
           </div>
 
-          {/* Right: thumbnail — below text on mobile, right column on desktop */}
+          {/* Right: gallery — below text on mobile, right column on desktop */}
           {thumbnail && (
             <div className="order-first lg:order-none">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
-                <Image
-                  src={thumbnail}
-                  alt={title}
-                  fill
-                  className="object-cover"
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
+              <ProjectGallery thumbnail={thumbnail} media={media} title={title} />
             </div>
           )}
         </div>
