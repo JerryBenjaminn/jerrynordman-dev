@@ -2,7 +2,7 @@ import { projects } from "@/data/projects";
 
 export function HudPanel() {
   const count = projects.length;
-  const latest = count > 0 ? projects[count - 1].title : "—";
+  const latest = count > 0 ? projects[0].title : "—";
 
   return (
     <div className="lg:flex lg:justify-end">

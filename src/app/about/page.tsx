@@ -14,7 +14,7 @@ const skills = [
 const currently = [
   "Studying game development at Metropolia UAS",
   "Building my portfolio",
-  "Open to internship opportunities",
+  "QA/Game Design intern at JetDogs Studios",
 ];
 
 function GitHubIcon() {
