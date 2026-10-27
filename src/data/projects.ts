@@ -39,6 +39,7 @@ export const projects: Project[] = [
     longDesc: "Wavekeep is a wave defence game where the player holds the keep against waves of enemies. Players can upgrade and combine different abilities, each combination altering the gameplay. Mix and match heroes to unlock powerful apex abilities that decimate enemies in a flash!",
     thumbnail: "/projects/WaveDual.png",
     media: ["/projects/WavekeepCards.png", "/projects/WavekeepHub.png", "/projects/WaveThunder.png"],
+    repoUrl: "https://github.com/JerryBenjaminn/Wavekeep",
     featured: true,
   },
   {
