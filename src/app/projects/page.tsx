@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { projects } from "@/data/projects";
 import { ProjectCard } from "@/components/ui/ProjectCard";
+import { ItchBanner } from "@/components/ui/ItchBanner";
 
 export const metadata: Metadata = {
   title: "Projects — Jerry Nordman",
@@ -25,6 +26,8 @@ export default function ProjectsPage() {
           No projects yet
         </div>
       )}
+
+      <ItchBanner />
     </main>
   );
 }

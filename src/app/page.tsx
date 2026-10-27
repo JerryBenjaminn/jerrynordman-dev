@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { projects } from "@/data/projects";
+import { itchUrl } from "@/data/links";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { HudPanel } from "@/components/ui/HudPanel";
 
@@ -37,16 +38,26 @@ export default function Home() {
       {/* Featured projects */}
       <section id="projects" className="px-6 pb-24 pt-10">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-10 flex items-center justify-between">
+          <div className="mb-10 flex flex-wrap items-center justify-between gap-4">
             <h2 className="text-2xl font-bold text-[#ededed]">
               Featured Projects
             </h2>
-            <Link
-              href="/projects"
-              className="text-sm font-medium text-amber-400 transition-colors hover:text-amber-300"
-            >
-              All projects →
-            </Link>
+            <div className="flex items-center gap-6">
+              <a
+                href={itchUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-white/50 transition-colors hover:text-amber-400"
+              >
+                More on itch.io ↗
+              </a>
+              <Link
+                href="/projects"
+                className="text-sm font-medium text-amber-400 transition-colors hover:text-amber-300"
+              >
+                All projects →
+              </Link>
+            </div>
           </div>
 
           {featured.length > 0 ? (
