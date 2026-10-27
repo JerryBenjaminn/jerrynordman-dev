@@ -56,4 +56,16 @@ export const projects: Project[] = [
     youtubeUrl: "https://www.youtube.com/watch?v=sRcJjxYwO-o",
     featured: true,
   },
+  {
+    slug: "wavekeep",
+    title: "Wavekeep",
+    year: 2026,
+    tags: ["Tower Defence", "Wave Defence"],
+    role: "Solo Developer",
+    shortDesc: "Hold the line against hordes of enemies. Experiment with different hero combinations and see how they interact with each other.",
+    longDesc: "Wavekeep is a wave defence game where the player holds the keep against waves of enemies. Players can upgrade and combine different abilities, each combination altering the gameplay. Mix and match heroes to unlock powerful apex abilities that decimate enemies in a flash!",
+    thumbnail: "/projects/WaveDual.png",
+    media: ["/projects/WavekeepCards.png", "/projects/WavekeepHub.png", "/projects/WaveThunder.png"],
+    featured: true,
+  },
 ];

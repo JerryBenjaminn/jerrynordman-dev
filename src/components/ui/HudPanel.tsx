@@ -40,7 +40,7 @@ export function HudPanel() {
               </span>
               <span className="flex items-center gap-1.5 text-[11px] text-emerald-400">
                 <span className="animate-hud-blink [animation-delay:500ms] h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
-                Open to internship
+                QA/Game Design intern at JetDogs Studios
               </span>
             </div>
           </div>
