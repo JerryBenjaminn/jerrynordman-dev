@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { projects } from "@/data/projects";
 import { TagPill } from "@/components/ui/TagPill";
 import { ProjectGallery } from "@/components/ProjectGallery";
+import { GameEmbed } from "@/components/GameEmbed";
 
 type Props = { params: { slug: string } };
 
@@ -29,7 +30,7 @@ export default function ProjectPage({ params }: Props) {
   const project = projects.find((p) => p.slug === params.slug);
   if (!project) notFound();
 
-  const { title, year, role, tags, longDesc, thumbnail, media, youtubeUrl, playUrl, repoUrl, downloadUrl } = project;
+  const { title, year, role, tags, longDesc, thumbnail, media, youtubeUrl, playUrl, repoUrl, downloadUrl, embedUrl, embedSizeMb } = project;
   const ytId = youtubeUrl ? getYouTubeId(youtubeUrl) : null;
 
   return (
@@ -70,8 +71,16 @@ export default function ProjectPage({ params }: Props) {
             <p className="text-base leading-relaxed text-white/70">{longDesc}</p>
 
             {/* Action buttons */}
-            {(playUrl || repoUrl || downloadUrl) && (
+            {(embedUrl || playUrl || repoUrl || downloadUrl) && (
               <div className="flex flex-wrap gap-3">
+                {embedUrl && (
+                  <a
+                    href="#play"
+                    className="inline-block rounded-full bg-amber-400 px-6 py-2.5 text-sm font-semibold text-[#0a0a0f] transition-all duration-150 hover:brightness-110 active:scale-95"
+                  >
+                    Play in browser
+                  </a>
+                )}
                 {playUrl && (
                   <a
                     href={playUrl}
@@ -113,6 +122,9 @@ export default function ProjectPage({ params }: Props) {
             </div>
           )}
         </div>
+
+        {/* Web build — full width below the grid, loads on click */}
+        {embedUrl && <GameEmbed src={embedUrl} title={title} poster={thumbnail} sizeMb={embedSizeMb} />}
 
         {/* YouTube embed — full width below the grid */}
         {ytId && (

@@ -12,10 +12,33 @@ export type Project = {
   downloadUrl?: string;
   repoUrl?: string;
   youtubeUrl?: string;
+  embedUrl?: string;     // Web build in /public/games/, played on the project page
+  embedSizeMb?: number;
   featured: boolean;
 };
 
 export const projects: Project[] = [
+  {
+    slug: "we-are-all-equal",
+    title: "We Are All Equal",
+    year: 2026,
+    tags: ["Unity", "C#", "Yarn Spinner", "Narrative", "Detective"],
+    role: "Solo Developer",
+    shortDesc: "A dark noir detective game. A raven undertaker reads the bodies of the dead to find out who killed them, and who profits.",
+    longDesc: "We Are All Equal is a narrative detective game set in New Accord, a city where every animal is equal on paper. You play Edgar, a raven undertaker who buries the dead the authorities would rather forget. Examine bodies under a lamp, test samples on a chemical bench, link clues in your book and decide what goes into the city register. Every choice and every careless mistake carries over into the following cases and the city's election. Three playable cases, built in Unity 6 with Yarn Spinner dialogue. Contains dark themes: death, the slaughter and exploitation of animals, and violence.",
+    thumbnail: "/projects/waae-title.jpg",
+    media: [
+      "/projects/waae-title.jpg",
+      "/projects/waae-office.jpg",
+      "/projects/waae-map.jpg",
+      "/projects/waae-workbench.jpg",
+      "/projects/waae-bench.jpg",
+      "/projects/waae-diner.jpg",
+    ],
+    embedUrl: "/games/we-are-all-equal/index.html",
+    embedSizeMb: 44,
+    featured: true,
+  },
   {
     slug: "cubbys-blocks",
     title: "Cubby's Blocks",

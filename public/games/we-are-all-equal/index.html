@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Selainversion sivupohja: peli sovitetaan 16:9-laatikkona mihin tahansa ikkunaan tai iframeen. -->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>We Are All Equal</title>
+    <style>
+      html, body { margin: 0; padding: 0; height: 100%; background: #0d0c0b; overflow: hidden; }
+      body { display: flex; align-items: center; justify-content: center; height: 100vh; height: 100dvh;
+             font-family: Georgia, "Times New Roman", serif; color: #d8cdb8; }
+      #frame { position: relative; width: min(100vw, calc(100vh * 16 / 9)); height: min(100vh, calc(100vw * 9 / 16));
+               width: min(100vw, calc(100dvh * 16 / 9)); height: min(100dvh, calc(100vw * 9 / 16)); }
+      #unity-canvas { width: 100%; height: 100%; display: block; background: #0d0c0b; outline: none; }
+      #loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center;
+                 justify-content: center; gap: 1.2em; background: #0d0c0b; text-align: center; padding: 0 16px; }
+      #loading h1 { margin: 0; font-weight: normal; letter-spacing: 0.3em; font-size: clamp(18px, 4vw, 44px); }
+      #bar { width: min(60%, 420px); height: 3px; background: #2a2622; }
+      #bar div { width: 0; height: 100%; background: #b5862f; transition: width 0.2s; }
+      #note { font-size: clamp(11px, 1.6vw, 15px); opacity: 0.6; }
+      #fullscreen { position: fixed; left: 6px; top: 6px; z-index: 1; width: 28px; height: 28px; border: 0; padding: 0; opacity: 0.6;
+                    background: rgba(0, 0, 0, 0.35); color: #d8cdb8; font-size: 18px; cursor: pointer; display: none; }
+      #rotate { position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
+                background: #0d0c0b; text-align: center; padding: 0 24px; font-size: 18px; z-index: 2; }
+      @media (orientation: portrait) and (pointer: coarse) { #rotate { display: flex; } }
+    </style>
+  </head>
+  <body>
+    <div id="frame">
+      <canvas id="unity-canvas" tabindex="-1"></canvas>
+      <div id="loading">
+        <h1>WE ARE ALL EQUAL</h1>
+        <div id="bar"><div></div></div>
+        <div id="note">Loading the city&hellip;</div>
+      </div>
+      <button id="fullscreen" title="Fullscreen" aria-label="Fullscreen">&#x26F6;</button>
+    </div>
+    <div id="rotate">Turn your device sideways to play.</div>
+    <script src="Build/WeAreAllEqual-Web.loader.js"></script>
+    <script>
+      var bar = document.querySelector("#bar div");
+      var note = document.querySelector("#note");
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        arguments: [],
+        dataUrl: "Build/WeAreAllEqual-Web.data.unityweb",
+        frameworkUrl: "Build/WeAreAllEqual-Web.framework.js.unityweb",
+        codeUrl: "Build/WeAreAllEqual-Web.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "WeAreAllEqual",
+        productVersion: "1.0",
+        // Puhelimissa tarkkuus enintään kaksinkertainen, jotta teksti on terävää mutta muisti riittää.
+        devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
+      }, function (progress) {
+        bar.style.width = (100 * progress) + "%";
+      }).then(function (unityInstance) {
+        document.querySelector("#loading").style.display = "none";
+        var button = document.querySelector("#fullscreen");
+        if (document.fullscreenEnabled || document.webkitFullscreenEnabled) {
+          button.style.display = "block";
+          button.onclick = function () { unityInstance.SetFullscreen(1); };
+        }
+      }).catch(function (message) {
+        note.textContent = "The game could not start in this browser. " + message;
+        note.style.opacity = 1;
+      });
+    </script>
+  </body>
+</html>
