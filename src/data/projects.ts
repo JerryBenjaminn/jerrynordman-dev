@@ -25,7 +25,7 @@ export const projects: Project[] = [
     tags: ["Unity", "C#", "Yarn Spinner", "Narrative", "Detective"],
     role: "Solo Developer",
     shortDesc: "A dark noir detective game. A raven undertaker reads the bodies of the dead to find out who killed them, and who profits.",
-    longDesc: "We Are All Equal is a narrative detective game set in New Accord, a city where every animal is equal on paper. You play Edgar, a raven undertaker who buries the dead the authorities would rather forget. Examine bodies under a lamp, test samples on a chemical bench, link clues in your book and decide what goes into the city register. Every choice and every careless mistake carries over into the following cases and the city's election. Three playable cases, built in Unity 6 with Yarn Spinner dialogue. Contains dark themes: death, the slaughter and exploitation of animals, and violence.",
+    longDesc: "We Are All Equal is a narrative detective game set in New Accord, a city where every animal is equal on paper. You play Edgar, a raven undertaker who buries the dead the authorities would rather forget. Examine bodies under a lamp, test samples on a chemical bench, link clues in your book and decide what goes into the city register. Every choice and every careless mistake carries over into the following cases and the city's election. Cases 1 and 2 are playable; Case 3 is in development. Built in Unity 6 with Yarn Spinner dialogue. Contains dark themes: death, the slaughter and exploitation of animals, and violence.",
     thumbnail: "/projects/waae-title.jpg",
     media: [
       "/projects/waae-title.jpg",
