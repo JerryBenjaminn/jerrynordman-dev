@@ -58,7 +58,19 @@
         var button = document.querySelector("#fullscreen");
         if (document.fullscreenEnabled || document.webkitFullscreenEnabled) {
           button.style.display = "block";
-          button.onclick = function () { unityInstance.SetFullscreen(1); };
+          // Koko sivu koko näytölle, ei pelkkä kangas: peli pysyy 16:9-laatikossa, ja leveällä puhelimella
+          // sivuille jää palkit. Unityn SetFullscreen venyttäisi kankaan, ja kirjan alareuna jäisi ruudun alle.
+          button.onclick = function () {
+            var page = document.documentElement;
+            if (document.fullscreenElement || document.webkitFullscreenElement) {
+              (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+              return;
+            }
+            var request = page.requestFullscreen || page.webkitRequestFullscreen;
+            var done = request.call(page);
+            if (done && done.then && screen.orientation && screen.orientation.lock)
+              done.then(function () { return screen.orientation.lock("landscape"); }).catch(function () {});
+          };
         }
       }).catch(function (message) {
         note.textContent = "The game could not start in this browser. " + message;
